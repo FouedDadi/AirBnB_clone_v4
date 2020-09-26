@@ -2,11 +2,11 @@ $(document).ready(function () {
   const list = {};
   $('INPUT[type="checkbox"]').click(function () {
     if (this.checked) {
-      list[$(this).attr('data-name')] = $(this).attr('data-id');
+      list[$(this).attr('data-id')] = $(this).attr('data-name');
     } else {
-      delete list[$(this).attr('data-name')];
+      delete list[$(this).attr('data-id')];
     }
     text = Object.values(list).join(', ')
-    $('DIV.amenities h4').text(Object.values(list).join(', '))
+    $('DIV.amenities h4').text(text)
   });
 });
