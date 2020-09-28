@@ -24,7 +24,6 @@ $(document).ready(function () {
       contentType: "application/json",
       dataType: 'json',
       success: function (data) {
-        console.log(data)
           for(let x in data) {
             $(section.places).append(
               '<article>' + 
