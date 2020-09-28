@@ -1,3 +1,4 @@
+const $ = window.$;
 $(document).ready(function () {
   const list = {};
   $('INPUT[type="checkbox"]').click(function () {
@@ -6,7 +7,7 @@ $(document).ready(function () {
     } else {
       delete list[$(this).attr('data-id')];
     }
-    text = Object.values(list).join(', ')
-    $('DIV.amenities h4').text(text)
+    const text = Object.values(list).join(', ');
+    $('DIV.amenities h4').text(text);
   });
 });
