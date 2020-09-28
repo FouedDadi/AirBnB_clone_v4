@@ -47,4 +47,39 @@ $(document).ready(function () {
        }
     }
   });
+  $('BUTTON').click(function () {
+    $.ajax({
+      url: 'http://0.0.0.0:5001/api/v1/places_search',
+      type: 'POST',
+      data: JSON.stringify({ amenities: list }),
+      contentType: 'application/json',
+      dataType: 'json',
+      error: function (e) {
+        console.log(e);
+      },
+      success: function (data) {
+        $('section.places').empty();
+        for(let x = 0; x < data.length; x++) {
+            $('section.places').append(
+              '<article>' + 
+                '<div class="title_box">' +
+                  '<h2> ' + data[x].name + '</h2>' +
+                  '<div class="price_by_night">' + data[x].price_by_night + '$</div>' +
+                '</div>' +
+                '<div class="information">' +
+                  '<div class="max_guest"> ' + data[x].max_guest + ' Guest ' + '</div>' + 
+                  '<div class="number_rooms"> ' + data[x].number_rooms + ' Bedroom ' + '</div>' +
+                  '<div class="number_bathrooms"> ' + data[x].number_bathrooms + ' Bathroom ' + '</div>' +
+                '</div>' + 
+                '<div class="user">' + 
+                '<div class="description">' +
+                  + data[x].description +
+                '</div>' +
+              '</article>')
+       }
+    }
+  });
+
+  });
 });
+
